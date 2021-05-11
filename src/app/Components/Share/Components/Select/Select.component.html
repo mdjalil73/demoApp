@@ -1,0 +1,16 @@
+<div>
+  <div class="mb-3 col-md-4 row">
+    <label class="col-sm-4 col-form-label">Select Type</label>
+    <select
+      class="form-select col-sm-10"
+      #t
+      [formControl]="control"
+      (change)="onChange(t.value)"
+    >
+      <option value="-1" *ngIf="defaultOption">{{ defaultOption }}</option>
+      <option *ngFor="let p of source" [value]="p.id">
+        {{ p.name }}
+      </option>
+    </select>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<h3>Country Details</h3>
+
+<form [formGroup]="parent" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name"> Name </label>
+    <input type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="Capital"> Capital </label>
+    <input type="text" formControlName="capital" />
+  </div>
+  <div>
+    <label for="Population"> Population </label>
+    <input type="text" formControlName="population" />
+  </div>
+  <app-Currencies [parent]="parent"></app-Currencies>
+  <div>
+    <label for="Flag"> Flag </label>
+    <input type="text" formControlName="flag" />
+  </div>
+</form>

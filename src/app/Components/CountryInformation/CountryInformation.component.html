@@ -1,0 +1,21 @@
+<form novalidate [formGroup]="form" *ngIf="form">
+  <app-select
+    [control]="form.get('region')"
+    [source]="regions"
+    [defaultOption]="'Please Select Region'"
+    (ChangeEmmit)="onChangeRegionEmmit($event)"
+    >Regions
+  </app-select>
+  <app-select
+    [control]="form.get('country')"
+    [source]="countriesByRegion"
+    [defaultOption]="'Please Select Country'"
+    (ChangeEmmit)="onChangeCountriesEmmit($event)"
+    *ngIf="form.value.region !== '-1'"
+    >Countries
+  </app-select>
+  <app-CountryDetails
+    [parent]="form.get('countryDetail')"
+    *ngIf="form.value.country !== '-1'"
+  ></app-CountryDetails>
+</form>
