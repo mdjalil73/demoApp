@@ -1,22 +1,65 @@
-<h3>Country Details</h3>
+<div class="card">
+  <div class="card-header">
+    {{ pageTitle }}
+  </div>
+  <div class="card-body">
+    <form novalidate [formGroup]="parent">
+      <fieldset>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="name">Name</label>
 
-<form [formGroup]="parent" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="name"> Name </label>
-    <input type="text" formControlName="name" />
-  </div>
+          <div class="col-md-9">
+            <input
+              class="form-control"
+              id="name"
+              type="text"
+              formControlName="name"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="Capital">Capital</label>
 
-  <div>
-    <label for="Capital"> Capital </label>
-    <input type="text" formControlName="capital" />
+          <div class="col-md-9">
+            <input
+              class="form-control"
+              id="Capital"
+              type="text"
+              formControlName="capital"
+            />
+          </div>
+        </div>
+        <app-Currencies [parent]="parent"></app-Currencies>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="Population"
+            >Population</label
+          >
+
+          <div class="col-md-9">
+            <input
+              class="form-control"
+              id="Population"
+              type="text"
+              formControlName="population"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="Flag">Flag</label>
+
+          <div class="col-md-9">
+            <input
+              class="form-control"
+              id="Flag"
+              type="text"
+              formControlName="flag"
+            />
+          </div>
+        </div>
+      </fieldset>
+    </form>
   </div>
-  <div>
-    <label for="Population"> Population </label>
-    <input type="text" formControlName="population" />
-  </div>
-  <app-Currencies [parent]="parent"></app-Currencies>
-  <div>
-    <label for="Flag"> Flag </label>
-    <input type="text" formControlName="flag" />
-  </div>
-</form>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>

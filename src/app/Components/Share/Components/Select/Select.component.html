@@ -1,8 +1,10 @@
-<div>
-  <div class="mb-3 col-md-4 row">
-    <label class="col-sm-4 col-form-label">Select Type</label>
+<div class="form-group row">
+  <label class="col-md-3 col-form-label" for="id">{{ name }}</label>
+
+  <div class="col-md-9">
     <select
-      class="form-select col-sm-10"
+      class="form-control"
+      id="id"
       #t
       [formControl]="control"
       (change)="onChange(t.value)"

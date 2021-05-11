@@ -18,6 +18,7 @@ export class SelectComponent implements OnInit {
   generalControl: FormControl = new FormControl();
   @Input('control') control: FormControl;
   @Input('source') source: Select[];
+  @Input('name') name = '';
   @Input('defaultOption') defaultOption?: string;
 
   @Output() PropertyUpdate = new EventEmitter<boolean>();
@@ -29,14 +30,14 @@ export class SelectComponent implements OnInit {
   onChange(event: any) {
     this.ChangeEmmit.emit(event);
   }
-  controlName(): string {
-    const controlName = this.getControlName(this.control);
-    return controlName;
-  }
-  getControlName(c: AbstractControl): string | null {
-    const formGroup = c.parent.controls;
-    return Object.keys(formGroup).find((name) => c === formGroup[name]) || null;
-  }
+  // controlName(): string {
+  //   const controlName = this.getControlName(this.control);
+  //   return controlName;
+  // }
+  // getControlName(c: AbstractControl): string | null {
+  //   const formGroup = c.parent.controls;
+  //   return Object.keys(formGroup).find((name) => c === formGroup[name]) || null;
+  // }
   public hasError = (errorName: string) => {
     console.log(this.control.errors);
     return this.control.hasError(errorName);

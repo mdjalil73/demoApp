@@ -6,6 +6,8 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './CountryDetails.component.html',
 })
 export class CountryDetailsComponent implements OnInit, OnDestroy {
+  pageTitle = 'Product Details';
+  errorMessage = '';
   _parent: FormGroup;
   get parent(): FormGroup {
     return this._parent;

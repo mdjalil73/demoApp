@@ -1,4 +1,9 @@
-currencies
-<div *ngFor="let item of parent.get('currencies').value">
-  <span>{{ item.name }} </span>
+<div class="form-group row">
+  <label class="col-md-3 col-form-label" for="Currencies">Currencies</label>
+
+  <div class="col-md-9">
+    <div *ngFor="let item of parent.get('currencies').value">
+      <span>{{ item.name }} </span>
+    </div>
+  </div>
 </div>

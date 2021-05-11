@@ -11,7 +11,10 @@ import { Select } from '../Share/Models/select';
   templateUrl: './CountryInformation.component.html',
 })
 export class CountryInformationComponent implements OnInit, OnDestroy {
-  public form: FormGroup;
+  pageTitle = 'Product Information';
+  errorMessage = '';
+  loadDetails: boolean = false;
+  form: FormGroup;
   regions: Select[] = [
     { id: 'Europe', name: 'Europe' },
     { id: 'Asia', name: 'Asia' },
@@ -52,6 +55,7 @@ export class CountryInformationComponent implements OnInit, OnDestroy {
     });
   }
   onChangeRegionEmmit(event: number | string) {
+    this.loadDetails = false;
     this.form.patchValue({ countryDetail: this.FormDetailsInitialize() });
     this.countriesByRegion = [];
     this.form.patchValue({ country: '-1' });
@@ -93,5 +97,8 @@ export class CountryInformationComponent implements OnInit, OnDestroy {
       symbol: [data.symbol],
     });
     return returnValue;
+  }
+  onLoad() {
+    this.loadDetails = true;
   }
 }

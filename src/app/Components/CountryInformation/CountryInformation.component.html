@@ -1,21 +1,50 @@
-<form novalidate [formGroup]="form" *ngIf="form">
-  <app-select
-    [control]="form.get('region')"
-    [source]="regions"
-    [defaultOption]="'Please Select Region'"
-    (ChangeEmmit)="onChangeRegionEmmit($event)"
-    >Regions
-  </app-select>
-  <app-select
-    [control]="form.get('country')"
-    [source]="countriesByRegion"
-    [defaultOption]="'Please Select Country'"
-    (ChangeEmmit)="onChangeCountriesEmmit($event)"
-    *ngIf="form.value.region !== '-1'"
-    >Countries
-  </app-select>
-  <app-CountryDetails
-    [parent]="form.get('countryDetail')"
-    *ngIf="form.value.country !== '-1'"
-  ></app-CountryDetails>
-</form>
+<div class="card">
+  <div class="card-header">
+    {{ pageTitle }}
+  </div>
+  <div class="card-body">
+    <form novalidate [formGroup]="form">
+      <fieldset>
+        <app-select
+          [control]="form.get('region')"
+          [source]="regions"
+          [name]="'Region'"
+          [defaultOption]="'Please Select Region'"
+          (ChangeEmmit)="onChangeRegionEmmit($event)"
+          >Regions
+        </app-select>
+        <app-select
+          [control]="form.get('country')"
+          [source]="countriesByRegion"
+          [name]="'Country'"
+          [defaultOption]="'Please Select Country'"
+          (ChangeEmmit)="onChangeCountriesEmmit($event)"
+          *ngIf="form.value.region !== '-1'"
+          >Countries
+        </app-select>
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+            <span>
+              <button
+                class="btn btn-primary"
+                type="button"
+                style="width:80px;margin-right:10px"
+                *ngIf="form.value.country !== '-1'"
+                (click)="onLoad()"
+              >
+                Load
+              </button>
+            </span>
+          </div>
+        </div>
+        <app-CountryDetails
+          [parent]="form.get('countryDetail')"
+          *ngIf="form.value.country !== '-1' && loadDetails"
+        ></app-CountryDetails>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>
